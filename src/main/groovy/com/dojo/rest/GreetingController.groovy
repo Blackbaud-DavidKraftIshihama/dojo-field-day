@@ -3,10 +3,9 @@ import com.dojo.rest.*
 
 @RestController
 public class GreetingController {
-    def template = "hello %s"
-    def id = 7
-    @RequestMapping("/greeting")
-    public Greeting greeting(@RequestParam(value="name", required=false, defaultValue="World") name) {
-        return new Greeting(id : this.id, content : String.format(template, name))
+
+    @RequestMapping("/save")
+    public Child greeting(@RequestParam(value="childName", required=true) String childName) {
+        return new Child(name : childName)
     }
 }
