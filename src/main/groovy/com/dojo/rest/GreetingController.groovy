@@ -1,5 +1,3 @@
-package com.dojo.rest
-
 import org.springframework.web.bind.annotation.*
 import com.dojo.rest.*
 
