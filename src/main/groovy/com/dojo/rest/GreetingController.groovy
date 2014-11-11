@@ -1,16 +1,14 @@
-import groovy.sql.Sql
+package com.dojo.rest
+
+import com.dojo.dao.data.Child
+import com.dojo.dao.manager.ChildManager
 import org.springframework.web.bind.annotation.*
-import com.dojo.rest.*
 
 @RestController
 public class GreetingController {
-    static instance = Sql.newInstance('jdbc:h2:tcp://localhost/~/test', "sa", null, "org.h2.Driver")
-    static id = 0;
-
     @RequestMapping("/save")
     public Child greeting(@RequestParam(value="childName", required=true) String childName) {
-        instance.execute("Insert into greeting values (?, ?);", id, childName)
-        id++
-        return new Child(name : childName)
+        ChildManager manager = new ChildManager()
+        return manager.find(25L)
     }
 }
